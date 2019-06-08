@@ -1,0 +1,12 @@
+git clone xiaodonghub@reg.xiaodonghub.com:~/xiaodonghub.git
+
+git add .
+
+git config --global user.email "you@example.com"
+
+
+git commit -m "test"
+
+git push origin master 
+
+git push origin master 

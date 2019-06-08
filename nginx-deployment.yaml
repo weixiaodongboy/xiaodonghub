@@ -1,0 +1,22 @@
+apiVersion: apps/v1        # kubectl api-versions
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: reg.xiaodonghub.com/library/nginx:v1.15
+        ports:
+        - containerPort: 80
+

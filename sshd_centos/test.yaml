@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploytest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etcd
+  template:
+    metadata:
+      labels:
+        app: etcd
+    spec:
+      containers:
+      - name: etcd
+        image: reg.xiaodonghub.com/library/centos_etcd:no22
+        ports:
+        - containerPort: 22
+        - containerPort: 2379
+        - containerPort: 2380
+        volumeMounts:
+        - name: etcdconfig
+          mountPath: /root/etcd
+      volumes:
+      - name: etcdconfig
+        hostPath:
+          path: /root/etcd/config
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svctest
+spec:
+  type: NodePort
+  selector:
+    app: etcd
+  ports:
+    - protocol: TCP
+      port: 8122
+      targetPort: 22
+      nodePort: 30122

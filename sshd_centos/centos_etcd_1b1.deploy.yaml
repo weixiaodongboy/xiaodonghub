@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $DEPLOY_NAME
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $LABEL_NAME
+  template:
+    metadata:
+      labels:
+        app: $LABEL_NAME 
+    spec:
+      containers:
+      - name: $LABEL_NAME 
+        image: $IMAGE_NAME
+        ports:
+        - containerPort: 22
+        - containerPort: 2379
+        - containerPort: 2380
+        volumeMounts:
+        - name: etcdconfig
+          mountPath: /root/etcd
+      volumes:
+      - name: etcdconfig
+        hostPath:
+          path: /root/etcd/config
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: $SVC_NAME
+spec:
+  type: NodePort
+  selector:
+    app: $LABEL_NAME
+  ports:
+    - protocol: TCP
+      port: $PORT
+      targetPort: $TARGETPORT
+      nodePort: $NODEPORT

@@ -74,6 +74,6 @@ sed -i 's#\$PEER3_IP#'$peer3_ip'#' etcd.conf
 
 
 cp /root/etcd/etcd.conf /etc/etcd/etcd.conf
-
+cp /root/etcd/etcd.service /usr/lib/systemd/system/etcd.service
 cp etcd.conf.tmp etcd.conf
 

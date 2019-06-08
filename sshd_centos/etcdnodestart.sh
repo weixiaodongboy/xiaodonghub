@@ -18,4 +18,5 @@ docker run -itd \
 --expose 2379 --expose 2380 \
 --name $1 reg.xiaodonghub.com/library/centos_etcd:"$2" \
  /usr/sbin/init
+#docker run -itd -v /root/github/xiaodonghub/sshd_centos/etcdconf:/root/etcd/ --name etcd01 reg.xiaodonghub.com/library/centos_etcd:0.2  /usr/sbin/init
 docker exec -it $1 bash

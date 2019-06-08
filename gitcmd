@@ -2,7 +2,7 @@ git clone xiaodonghub@reg.xiaodonghub.com:~/xiaodonghub.git
 
 git add .
 
-git config --global user.email "you@example.com"
+git config --global user.email "weixiaodongboy@gmail.com"
 
 
 git commit -m "test"

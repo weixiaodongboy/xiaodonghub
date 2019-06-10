@@ -24,12 +24,11 @@ echo "local_ip = $local_ip"
 cp /root/etcd/etcd-single.conf etcd.conf.tmp
 
 
-sed -i 's#\$ETCD_NAME#'$local_name'#' etcd.conf
+sed -i 's#\$ETCD_NAME#'$local_name'#' etcd-single.conf
 
-sed -i 's#\$LOCAL_IP#'$local_ip'#' etcd.conf
+sed -i 's#\$LOCAL_IP#'$local_ip'#' etcd-single.conf
 
 
 cp /root/etcd/etcd-single.conf /etc/etcd/etcd.conf
-
+cp /root/etcd/etcd.service /usr/lib/systemd/system/etcd.service
 cp etcd.conf.tmp etcd-single.conf
-cp 

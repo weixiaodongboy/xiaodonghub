@@ -4,7 +4,7 @@ echo "hello"
 
 
 
-if [ -a $1 ]; then
+if [ -a $2 ]; then
   echo "argvs null, exiting"
   exit
 fi
@@ -14,12 +14,15 @@ ipaddr=$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)
 echo "current_ip = $ipaddr"
 
 local_name=$1
-local_ip=$ipaddr
 
+
+local_ip=$2
 
 echo "args satisfied"
 echo "local_name = $local_name"
 echo "local_ip = $local_ip"
+
+#exit
 
 cp /root/etcd/etcd-single.conf etcd.conf.tmp
 

@@ -1,6 +1,9 @@
 # 选择一个已有的os镜像作为基础
 #FROM centos:7
-FROM reg.xiaodonghub.com/library/centos_etcd:0.1
+#FROM redis
+#FROM nvbeta/node
+#FROM reg.xiaodonghub.com/library/centos_etcd:0.1
+FROM reg.xiaodonghub.com/library/nginx:v1.15
 # 镜像的作者
 MAINTAINER weixiaodongboy@gmail.com
  
@@ -35,11 +38,14 @@ EXPOSE 22
 #RUN yum clean all 
 #RUN rm -rf /var/cache/yum/*
 
-ADD startup /opt
-RUN chmod a+x /opt/startup
+RUN apt-get update
+RUN apt-get install -y iproute 
 
-WORKDIR /root/etcd
-CMD ["/root/etcd/myinit.sh","-D"]
+#ADD startup /opt
+#RUN chmod a+x /opt/startup
+
+#WORKDIR /root/etcd
+#CMD ["/root/etcd/myinit.sh","-D"]
 #CMD ["/usr/sbin/sshd", "-D"]
 #CMD [ "/usr/sbin/init"]
 

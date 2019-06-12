@@ -39,8 +39,9 @@ EXPOSE 22
 #RUN rm -rf /var/cache/yum/*
 
 RUN apt-get update
-RUN apt-get install -y iproute 
-
+#RUN apt-get install -y iproute 
+#RUN apt-get install -y net-tools 
+RUN apt-get install -y iputils-ping
 #ADD startup /opt
 #RUN chmod a+x /opt/startup
 
